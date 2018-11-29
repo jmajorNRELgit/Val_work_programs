@@ -13,7 +13,7 @@ import time
 
 person_data = []
 
-df = pd.read_csv(r'C:/Users/jmajor/Desktop/Andy'"'"'s programs/Pit_3_partial.csv')
+df = pd.read_csv('Pit_3_partial.csv')
 
 
 lis = ('ContentPlaceHolder1_FormView1_NAMELabel','ContentPlaceHolder1_FormView1_ADDL1Label'
@@ -22,7 +22,7 @@ lis = ('ContentPlaceHolder1_FormView1_NAMELabel','ContentPlaceHolder1_FormView1_
 
 
 options = Options()
-#options.set_headless('True')
+options.set_headless('True')
 driver = webdriver.Chrome(r'chromedriver.exe',chrome_options=options)
 
 start = time.time()
@@ -35,7 +35,7 @@ for num in df['number'][:10]:
     button = driver.find_element_by_id('ContentPlaceHolder1_Button1')
     button.click()
 
-    sleep(1)
+
     button2 = link = driver.find_element_by_link_text('Details')
     button2.click()
 
