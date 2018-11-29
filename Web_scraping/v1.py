@@ -22,17 +22,17 @@ lis = ('ContentPlaceHolder1_FormView1_NAMELabel','ContentPlaceHolder1_FormView1_
 
 
 options = Options()
-options.set_headless('True')
-driver = webdriver.Chrome(chrome_options=options)
+#options.set_headless('True')
+driver = webdriver.Chrome(r'chromedriver.exe',chrome_options=options)
 
 start = time.time()
 
-for num in df['number']:
+for num in df['number'][:10]:
     driver.get('http://pittsburg.okcountytreasurers.com/legal/parcel.aspx')
     box = driver.find_element_by_id('ContentPlaceHolder1_TextBox1')
     box.send_keys(num)
 
-    button = link = driver.find_element_by_id('ContentPlaceHolder1_Button1')
+    button = driver.find_element_by_id('ContentPlaceHolder1_Button1')
     button.click()
 
     sleep(1)
@@ -55,6 +55,8 @@ for num in df['number']:
 print(time.time() - start)
 
 
+
+
 #duplicates
 #caught = []
 #for i in range(len(df['number'])):
@@ -64,3 +66,7 @@ print(time.time() - start)
 #            print(i,j)
 #            print('\n')
 #            caught.append(i)
+
+#google search bar element. used class name. fixes error InvalidSelectorException: invalid selector: Compound class names not permitted
+#put periods after each word in the class name
+#driver.find_element_by_css_selector('.gLFyf.gsfi')
