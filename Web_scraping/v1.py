@@ -7,7 +7,6 @@ Created on Wed Nov 28 19:22:20 2018
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from time import sleep
 import pandas as pd
 import time
 
@@ -22,7 +21,7 @@ lis = ('ContentPlaceHolder1_FormView1_NAMELabel','ContentPlaceHolder1_FormView1_
 
 
 options = Options()
-options.set_headless('True')
+#options.set_headless('True')
 driver = webdriver.Chrome(r'chromedriver.exe',chrome_options=options)
 
 start = time.time()
@@ -39,7 +38,7 @@ for num in df['number'][:10]:
     button2 = link = driver.find_element_by_link_text('Details')
     button2.click()
 
-
+    time.sleep(.3)
 
     l = []
     for i in lis:
@@ -70,3 +69,12 @@ print(time.time() - start)
 #google search bar element. used class name. fixes error InvalidSelectorException: invalid selector: Compound class names not permitted
 #put periods after each word in the class name
 #driver.find_element_by_css_selector('.gLFyf.gsfi')
+
+
+
+#webdriver.Chrome(r'chromedriver.exe',chrome_options=options)
+#driver.get('https://wd5.myworkday.com/nrel/d/home.htmld')
+#button = driver.find_element_by_css_selector('.wd-applet.wd-applet-time')
+#button.click()
+#button2 = driver.find_element_by_css_selector('.WIXM.WMXM.WBDO.WHXM.WGKN.WJYM')
+#button2.click()
